@@ -23,3 +23,11 @@ The headline number is the time from that message until the last of the four PRs
 ```
 
 Give each agent access to its own four repos, send the message, and run `reset.sh` before the next run. Five runs per agent; report the median.
+
+## Timing a run
+
+```
+node collect.mjs <agent> <link-to-the-slack-message>
+```
+
+Prints and appends to `results.jsonl`: seconds from the message to the agent's first push (`firstPush`), to the last of the four PRs opening (`allPrsOpen`), and to CI green on all four (`allCiGreen`), plus per-repo detail. Set `SLACK_TOKEN` (a bot token in the benchmark workspace with `channels:history`) to also record the agent's first reply.
